@@ -1,0 +1,466 @@
+:root {
+  color: #eef4ff;
+  background: #0a0d12;
+  font-family:
+    Inter, "Segoe UI", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(24, 148, 116, 0.26), transparent 34rem),
+    linear-gradient(135deg, #07090d 0%, #121821 48%, #191716 100%);
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 28px;
+  display: grid;
+  place-items: center;
+}
+
+.control-panel {
+  width: min(1120px, 100%);
+  border: 1px solid rgba(180, 202, 225, 0.18);
+  border-radius: 8px;
+  background: rgba(9, 13, 18, 0.88);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(180, 202, 225, 0.16);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #07110d;
+  background: linear-gradient(135deg, #70f0a0, #43c8f2);
+  flex: 0 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: #8fa2b8;
+  font-size: 12px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.status-pill {
+  min-width: 116px;
+  height: 38px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(180, 202, 225, 0.16);
+  border-radius: 999px;
+  color: #bdc8d5;
+  background: rgba(255, 255, 255, 0.05);
+  white-space: nowrap;
+}
+
+.status-pill.active {
+  color: #78f2a6;
+  border-color: rgba(120, 242, 166, 0.42);
+}
+
+.status-pill.done {
+  color: #43c8f2;
+  border-color: rgba(67, 200, 242, 0.42);
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 0;
+}
+
+.device-section,
+.telemetry-section {
+  padding: 24px;
+}
+
+.device-section {
+  border-right: 1px solid rgba(180, 202, 225, 0.14);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a9b8c9;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.gpu-readout {
+  padding: 18px;
+  border: 1px solid rgba(180, 202, 225, 0.16);
+  border-radius: 8px;
+  background: #101821;
+}
+
+.gpu-readout p,
+.temperature-card p {
+  margin: 0 0 8px;
+  color: #8fa2b8;
+  font-size: 13px;
+}
+
+.gpu-readout strong {
+  display: block;
+  min-height: 34px;
+  color: #f7fbff;
+  font-size: 24px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.chip-board {
+  position: relative;
+  height: 210px;
+  margin: 22px 0;
+  border: 1px solid rgba(180, 202, 225, 0.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    #0d151c;
+  background-size: 24px 24px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.chip-core {
+  width: 130px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(112, 240, 160, 0.48);
+  border-radius: 8px;
+  color: #83f7ad;
+  background: #07110d;
+  box-shadow: 0 0 38px rgba(112, 240, 160, 0.16);
+}
+
+.chip-core span {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.pin {
+  position: absolute;
+  width: 22px;
+  height: 5px;
+  background: rgba(200, 216, 230, 0.28);
+}
+
+.pin:nth-child(n + 2):nth-child(-n + 8) {
+  top: 22px;
+}
+
+.pin:nth-child(n + 9):nth-child(-n + 15) {
+  bottom: 22px;
+}
+
+.pin:nth-child(n + 16):nth-child(-n + 22) {
+  left: 18px;
+  transform: rotate(90deg);
+}
+
+.pin:nth-child(n + 23) {
+  right: 18px;
+  transform: rotate(90deg);
+}
+
+.pin:nth-child(7n + 2) { left: 16%; }
+.pin:nth-child(7n + 3) { left: 27%; }
+.pin:nth-child(7n + 4) { left: 38%; }
+.pin:nth-child(7n + 5) { left: 49%; }
+.pin:nth-child(7n + 6) { left: 60%; }
+.pin:nth-child(7n + 7) { left: 71%; }
+.pin:nth-child(7n + 8) { left: 82%; }
+.pin:nth-child(7n + 16) { top: 18%; }
+.pin:nth-child(7n + 17) { top: 29%; }
+.pin:nth-child(7n + 18) { top: 40%; }
+.pin:nth-child(7n + 19) { top: 51%; }
+.pin:nth-child(7n + 20) { top: 62%; }
+.pin:nth-child(7n + 21) { top: 73%; }
+.pin:nth-child(7n + 22) { top: 84%; }
+
+.primary-action {
+  width: 100%;
+  min-height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 8px;
+  color: #06100c;
+  background: linear-gradient(135deg, #78f2a6, #43c8f2);
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    filter 160ms ease,
+    opacity 160ms ease;
+}
+
+.primary-action:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.primary-action:disabled {
+  opacity: 0.62;
+  cursor: wait;
+}
+
+.completion-message {
+  min-height: 44px;
+  margin: 16px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #8ff7b4;
+  line-height: 1.45;
+}
+
+.progress-wrap {
+  margin-bottom: 18px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  min-height: 38px;
+  color: #c7d3df;
+  line-height: 1.35;
+}
+
+.progress-label span {
+  overflow-wrap: anywhere;
+}
+
+.progress-label strong {
+  flex: 0 0 auto;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.progress-track {
+  height: 14px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #78f2a6, #43c8f2, #ffcc66);
+  transition: width 180ms ease;
+}
+
+.temperature-card {
+  min-height: 112px;
+  padding: 20px;
+  border: 1px solid rgba(180, 202, 225, 0.16);
+  border-radius: 8px;
+  background: #101821;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.temperature-card strong {
+  font-size: 46px;
+  line-height: 1;
+}
+
+.temperature-card.normal strong {
+  color: #8ff7b4;
+}
+
+.temperature-card.warning {
+  border-color: rgba(255, 204, 102, 0.52);
+  background: #1f1a10;
+}
+
+.temperature-card.warning strong,
+.temperature-card.warning svg {
+  color: #ffcc66;
+}
+
+.temperature-card.critical {
+  border-color: rgba(255, 91, 91, 0.64);
+  background: #241111;
+  animation: heatPulse 800ms ease-in-out infinite alternate;
+}
+
+.temperature-card.critical strong,
+.temperature-card.critical svg {
+  color: #ff6b6b;
+}
+
+@keyframes heatPulse {
+  from {
+    box-shadow: 0 0 0 rgba(255, 91, 91, 0);
+  }
+  to {
+    box-shadow: 0 0 36px rgba(255, 91, 91, 0.2);
+  }
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.metric-item {
+  min-height: 86px;
+  padding: 14px;
+  border: 1px solid rgba(180, 202, 225, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.metric-item span {
+  display: block;
+  margin-bottom: 8px;
+  color: #8fa2b8;
+  font-size: 13px;
+}
+
+.metric-item strong {
+  display: block;
+  color: #f7fbff;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.log-section {
+  padding: 0 24px 24px;
+}
+
+.log-list {
+  min-height: 152px;
+  padding: 14px 16px;
+  border: 1px solid rgba(180, 202, 225, 0.14);
+  border-radius: 8px;
+  background: #070b10;
+  color: #9fb0c1;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.log-list p {
+  margin: 0;
+}
+
+.log-list p + p {
+  margin-top: 8px;
+}
+
+@media (max-width: 820px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .device-section {
+    border-right: 0;
+    border-bottom: 1px solid rgba(180, 202, 225, 0.14);
+  }
+
+  .gpu-readout strong {
+    font-size: 21px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .device-section,
+  .telemetry-section,
+  .topbar {
+    padding: 18px;
+  }
+
+  .log-section {
+    padding: 0 18px 18px;
+  }
+
+  .brand-mark {
+    width: 46px;
+    height: 46px;
+  }
+
+  .temperature-card strong {
+    font-size: 38px;
+  }
+}
